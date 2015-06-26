@@ -1,0 +1,11 @@
+{
+  "name": "chef-consul-cluster-common",
+  "description": "Base role for chef-consul-cluster-common",
+  "default_attributes": {
+    "consul": {
+      "atlas_autojoin": true,
+      "atlas_cluster": "YOUR_ATLAS_ACCOUNT_NAME/YOUR_ATLAS_INFRA_NAME",
+      "atlas_token": "YOUR_ATLAS_API_TOKEN"
+    }
+  }
+}

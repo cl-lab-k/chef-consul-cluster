@@ -1,0 +1,15 @@
+{
+  "name": "chef-consul-cluster-client",
+  "description": "Base role for chef-consul-cluster-client",
+  "default_attributes": {
+    "consul": {
+      "service_mode": "client",
+      "bind_interface": "eth1"
+    }
+  },
+  "run_list": [
+    "role[chef-consul-cluster-common]",
+    "recipe[consul]",
+    "recipe[chef-consul-cluster::web]"
+  ]
+}

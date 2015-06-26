@@ -1,0 +1,26 @@
+#
+# Rakefile Name:: chef-server
+#
+# Copyright (c) 2015 CREATIONLINE,INC. All Rights Reserved.
+#
+
+desc 'berks vendor'
+task :berks do
+  sh 'berks vendor cookbooks'
+end
+
+desc 'vagrant up'
+task :vagrant do
+  sh 'CHEF_DRIVER=vagrant chef-client -z chef-server.rb'
+end
+
+desc 'destroy'
+task :destroy do
+  sh 'CHEF_DRIVER=vagrant chef-client -z destroy.rb'
+end
+
+task :default => [ :berks, :vagrant ]
+
+#
+# [EOF]
+#

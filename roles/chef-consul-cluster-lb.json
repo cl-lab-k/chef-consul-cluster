@@ -1,0 +1,20 @@
+{
+  "name": "chef-consul-cluster-lb",
+  "description": "Base role for chef-consul-cluster-lb",
+  "default_attributes": {
+    "dnsmasq": {
+      "enable_dns": true,
+      "dns": {
+        "server": [
+          "/consul/192.168.33.101#8600",
+          "/consul/192.168.33.102#8600",
+          "/consul/192.168.33.103#8600"
+        ]
+      }
+    }
+  },
+  "run_list": [
+    "recipe[dnsmasq]",
+    "recipe[chef-consul-cluster::lb]"
+  ]
+}

@@ -1,0 +1,35 @@
+#
+# Rakefile Name:: vms
+#
+# Copyright (c) 2015 CREATIONLINE,INC. All Rights Reserved.
+#
+
+#
+# vms
+#
+desc 'vagrant'
+task :vagrant do
+  sh 'CHEF_DRIVER=vagrant chef-client -z vms.rb'
+end
+
+#
+# destroy
+#
+desc 'destroy'
+task :destroy do
+  chef_dir = File.join( File.dirname(__FILE__), '..', '..', '.chef' )
+  vms = Dir.glob( "#{chef_dir}/vms/*.vm" )
+  sh "cd #{chef_dir}/vms && vagrant destroy -f"
+  sh "rm -f #{chef_dir}/vms/*.vm"
+  vms.each do |vm|
+    f = File.basename( vm, '.vm' )
+    sh "knife client delete -y #{f} ; true"
+    sh "knife node delete -y #{f} ; true"
+  end
+end
+
+task :default => [ :vagrant ]
+
+#
+# [EOF]
+#

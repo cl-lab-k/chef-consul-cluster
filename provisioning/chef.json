@@ -1,0 +1,15 @@
+{
+   "chef-server": {
+      "api_fqdn": "chef-server.example.jp",
+      "ipaddr":   "192.168.33.10"
+   },
+   "chef-user": {
+     "user_name": "testuser",
+     "first_name": "TEST",
+     "last_name": "USER",
+     "mail_addr": "testuser@example.jp",
+     "password": "testpswd",
+     "org_name": "testorg",
+     "org_full_name": "Test Organization"
+   }
+}
